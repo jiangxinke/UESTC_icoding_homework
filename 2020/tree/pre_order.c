@@ -70,3 +70,31 @@ void pre_order(BiTree root){
         }
     }
 }
+
+//mine
+#include "bitree.h" //请不要删除，否则检查不通过
+#include <stdio.h>
+#include <stdlib.h>
+void visit_node(BiTNode* node);
+
+void pre_order(BiTree root)
+{
+    BiTNode* p = root;
+    Stack* s;
+    init_stack(s);
+    //push(s, root);
+    while (!is_empty(s) || p != NULL) {
+        //while (top(s, &p) && p) {
+        while (p != NULL) {
+            visit_node(p);
+            push(s, p);
+            p = p->left;
+        }
+        if (!is_empty(s)) {
+            pop(s, &p);
+            p = p->right;
+        }
+        //  }
+    }
+}
+//also failed
